@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import { createGlobalStyle } from "styled-components";
+import LaunchList from "./LaunchesList";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
@@ -18,6 +19,7 @@ function App() {
       <GlobalStyle />
       <div className="App">
         <Header />
+        <LaunchList />
       </div>
     </>
   );
