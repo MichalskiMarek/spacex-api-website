@@ -12,11 +12,16 @@ const StyledNav = styled.nav`
   padding: 15px;
 `;
 
-const Navigation = () => {
+const Navigation = props => {
   return (
     <StyledNav>
       <Logo />
-      <Form />
+      <Form
+        rockets={props.rockets}
+        handleRocketSelect={props.handleRocketSelect}
+        handleSearchLaunches={props.handleSearchLaunches}
+        handleSuccesfulLaunches={props.handleSuccesfulLaunches}
+      />
     </StyledNav>
   );
 };

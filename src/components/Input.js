@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const StyledInput = styled.input`
@@ -10,24 +10,11 @@ const StyledInput = styled.input`
 `;
 
 const Input = props => {
-  const [input, setInput] = useState({});
-
-  const handleInputChange = e => {
-    const value =
-      e.currentTarget.type === "checkbox"
-        ? e.currentTarget.checked
-        : e.currentTarget.value;
-    setInput({
-      ...input,
-      [e.currentTarget.name]: value
-    });
-  };
-
   return (
     <StyledInput
       type={props.inputType}
       name={props.name}
-      onChange={handleInputChange}
+      onChange={props.handleSearchLaunches}
     />
   );
 };

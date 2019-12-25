@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import LaunchCard from "./LaunchCard";
 
@@ -10,24 +10,8 @@ const StyledUl = styled.ul`
   top: -3px;
 `;
 
-const LaunchList = () => {
-  const [launches, setLaunches] = useState([]);
-
-  const fetchLaunches = async () => {
-    const url = "https://api.spacexdata.com/v3/launches";
-    const response = await fetch(url);
-    const json = await response.json();
-
-    setLaunches(json);
-  };
-
-  useEffect(() => {
-    fetchLaunches();
-  }, []);
-
-  const allLaunches = launches.map(launch => {
-    console.log(launch);
-
+const LaunchList = props => {
+  const allLaunches = props.launches.map(launch => {
     return (
       <LaunchCard
         launch={launch.mission_name}

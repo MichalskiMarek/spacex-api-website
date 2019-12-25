@@ -8,10 +8,15 @@ const StyledHeader = styled.header`
   display: flex;
 `;
 
-const Header = () => {
+const Header = props => {
   return (
     <StyledHeader>
-      <Navigation />
+      <Navigation
+        rockets={props.rockets}
+        handleRocketSelect={props.handleRocketSelect}
+        handleSearchLaunches={props.handleSearchLaunches}
+        handleSuccesfulLaunches={props.handleSuccesfulLaunches}
+      />
     </StyledHeader>
   );
 };
