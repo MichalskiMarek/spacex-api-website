@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-function App() {
+const App = () => {
   const [launches, setLaunches] = useState([]);
   const [filteredLaunches, setFilteredLaunches] = useState(launches);
   const [rocketSelect, setRocketSelect] = useState("All");
@@ -29,7 +29,6 @@ function App() {
   });
 
   const fetchLaunches = async () => {
-    console.log("Fetching...");
     const url = "https://api.spacexdata.com/v3/launches";
     try {
       const response = await fetch(url);
@@ -43,29 +42,36 @@ function App() {
   useEffect(() => {
     if (!launches.length) fetchLaunches();
 
-    let result =
-      rocketSelect === "All"
-        ? launches
-        : launches.filter(launch => launch.rocket.rocket_name === rocketSelect);
+    const filterLaunches = () => {
+      let result =
+        rocketSelect === "All"
+          ? launches
+          : launches.filter(
+              launch => launch.rocket.rocket_name === rocketSelect
+            );
 
-    result =
-      wasSuccesful === "All"
-        ? result
-        : result.filter(
-            launch =>
-              launch.launch_success === (wasSuccesful === "Yes" ? true : false)
-          );
+      result =
+        wasSuccesful === "All"
+          ? result
+          : result.filter(
+              launch =>
+                launch.launch_success ===
+                (wasSuccesful === "Yes" ? true : false)
+            );
 
-    result =
-      searchLaunches === ""
-        ? result
-        : result.filter(launch =>
-            launch.mission_name
-              .toLowerCase()
-              .includes(searchLaunches.toLowerCase())
-          );
+      result =
+        searchLaunches === ""
+          ? result
+          : result.filter(launch =>
+              launch.mission_name
+                .toLowerCase()
+                .includes(searchLaunches.toLowerCase())
+            );
 
-    setFilteredLaunches(result);
+      setFilteredLaunches(result);
+    };
+
+    filterLaunches();
   }, [rocketSelect, launches, wasSuccesful, searchLaunches]);
 
   return (
@@ -82,6 +88,6 @@ function App() {
       </div>
     </>
   );
-}
+};
 
 export default App;

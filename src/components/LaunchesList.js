@@ -3,18 +3,17 @@ import styled from "styled-components";
 import LaunchCard from "./LaunchCard";
 
 const StyledUl = styled.ul`
-  height: 22px;
-  width: 180px;
-  margin-left: 20px;
-  position: relative;
-  top: -3px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
 `;
 
 const LaunchList = props => {
   const allLaunches = props.launches.map(launch => {
     return (
       <LaunchCard
-        launch={launch.mission_name}
+        launch={launch}
         key={launch.launch_date_unix + launch.flight_number}
       />
     );
