@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import { createGlobalStyle } from "styled-components";
 import LaunchList from "./LaunchesList";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
@@ -75,7 +76,7 @@ const App = () => {
   }, [rocketSelect, launches, wasSuccesful, searchLaunches]);
 
   return (
-    <>
+    <Router>
       <GlobalStyle />
       <div className="App">
         <Header
@@ -86,7 +87,7 @@ const App = () => {
         />
         <LaunchList launches={filteredLaunches} />
       </div>
-    </>
+    </Router>
   );
 };
 

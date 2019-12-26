@@ -10,6 +10,7 @@ const StyledNav = styled.nav`
   align-items: center;
   background-color: #0b0b0b;
   padding: 15px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
 `;
 
 const Navigation = props => {

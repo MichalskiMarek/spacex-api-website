@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import LaunchCard from "./LaunchCard";
+import { Switch, Route } from "react-router-dom";
+import MissionDetails from "./MissionDetails";
 
-const StyledUl = styled.ul`
+const StyledDiv = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -12,14 +14,20 @@ const StyledUl = styled.ul`
 const LaunchList = props => {
   const allLaunches = props.launches.map(launch => {
     return (
-      <LaunchCard
-        launch={launch}
-        key={launch.launch_date_unix + launch.flight_number}
-      />
+      <div key={launch.launch_date_unix + launch.flight_number}>
+        <LaunchCard launch={launch} />
+        <Route path={`/${launch.mission_name}`}>
+          <MissionDetails launch={launch} />
+        </Route>
+      </div>
     );
   });
 
-  return <StyledUl>{allLaunches}</StyledUl>;
+  return (
+    <Switch>
+      <StyledDiv>{allLaunches}</StyledDiv>
+    </Switch>
+  );
 };
 
 export default LaunchList;
