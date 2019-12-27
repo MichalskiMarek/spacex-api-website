@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import MissionPatch from "./MissionPatch";
+import LazyLoad from "react-lazyload";
 import { Link } from "react-router-dom";
 
 const StyledLink = styled(Link)`
@@ -42,7 +43,11 @@ const LaunchList = props => {
     <StyledLink to={`/${props.launch.mission_name.replace(/[(,)]/, "")}`}>
       <StyledUl>
         <li>
-          <MissionPatch missionPatch={props.launch.links.mission_patch_small} />
+          <LazyLoad offset={150}>
+            <MissionPatch
+              missionPatch={props.launch.links.mission_patch_small}
+            />
+          </LazyLoad>
         </li>
         <StyledMissionName>{props.launch.mission_name}</StyledMissionName>
         <li>{props.launch.rocket.rocket_name}</li>
