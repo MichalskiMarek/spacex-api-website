@@ -16,7 +16,7 @@ const LaunchList = props => {
     return (
       <div key={launch.launch_date_unix + launch.flight_number}>
         <LaunchCard launch={launch} />
-        <Route path={`/${launch.mission_name}`}>
+        <Route path={`/${launch.mission_name.replace(/[(,)]/, "")}`}>
           <MissionDetails launch={launch} />
         </Route>
       </div>

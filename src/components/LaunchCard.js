@@ -39,7 +39,7 @@ const StyledMissionName = styled.li`
 
 const LaunchList = props => {
   return (
-    <StyledLink to={`/${props.launch.mission_name}`}>
+    <StyledLink to={`/${props.launch.mission_name.replace(/[(,)]/, "")}`}>
       <StyledUl>
         <li>
           <MissionPatch missionPatch={props.launch.links.mission_patch_small} />
