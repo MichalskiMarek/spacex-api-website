@@ -32,8 +32,18 @@ const StyledDiv = styled.div`
   align-items: flex-start;
   padding: 10px;
   box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.75);
-  @media (max-width: 11 00px) {
-    width: 80%;
+
+  @media (max-width: 1100px) {
+    width: 90%;
+  }
+
+  @media (max-width: 700px) {
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
   }
 `;
 

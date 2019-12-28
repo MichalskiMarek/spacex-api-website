@@ -20,11 +20,11 @@ const StyledForm = styled.form`
     transition: transform 0.3s 0.1s ease-in-out;
 
     &::after {
-      visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")}
+      visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
       content: "";
       position: absolute;
       top: 0;
-      left: -235%;
+      right: 100%;
       width: 110vw;
       height: 100vh;
       background-color: rgba(0, 0, 0, 0.5);
