@@ -7,6 +7,11 @@ const StyledSelect = styled.select`
   height: 22px;
   border-radius: 3px;
   font-size: 16px;
+
+  @media (max-width: 851px) {
+    width: 50%;
+    margin-left: auto;
+  }
 `;
 
 const Select = props => {

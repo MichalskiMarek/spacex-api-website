@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    overflow: ${({ isOpen }) => (isOpen ? "hidden" : "scroll")}
   }
 `;
 
@@ -20,6 +21,7 @@ const App = () => {
   const [rocketSelect, setRocketSelect] = useState("All");
   const [wasSuccesful, setWasSuccesful] = useState("All");
   const [searchLaunches, setSearchLaunches] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleRocketSelect = e => setRocketSelect(e.currentTarget.value);
   const handleSearchLaunches = e => setSearchLaunches(e.currentTarget.value);
@@ -77,13 +79,15 @@ const App = () => {
 
   return (
     <Router>
-      <GlobalStyle />
+      <GlobalStyle isOpen={isOpen} />
       <div className="App">
         <Header
           rockets={[...new Set(rockets)]}
           handleRocketSelect={handleRocketSelect}
           handleSearchLaunches={handleSearchLaunches}
           handleSuccesfulLaunches={handleSuccesfulLaunches}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
         />
         <LaunchList launches={filteredLaunches} />
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "./Logo";
 import Form from "./Form";
+import Hamburger from "./Hamburger";
 
 const StyledNav = styled.nav`
   width: 100%;
@@ -13,16 +14,25 @@ const StyledNav = styled.nav`
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
 `;
 
-const Navigation = props => {
+const Navigation = ({
+  rockets,
+  handleRocketSelect,
+  handleSearchLaunches,
+  handleSuccesfulLaunches,
+  isOpen,
+  setIsOpen
+}) => {
   return (
     <StyledNav>
       <Logo />
       <Form
-        rockets={props.rockets}
-        handleRocketSelect={props.handleRocketSelect}
-        handleSearchLaunches={props.handleSearchLaunches}
-        handleSuccesfulLaunches={props.handleSuccesfulLaunches}
+        rockets={rockets}
+        handleRocketSelect={handleRocketSelect}
+        handleSearchLaunches={handleSearchLaunches}
+        handleSuccesfulLaunches={handleSuccesfulLaunches}
+        isOpen={isOpen}
       />
+      <Hamburger isOpen={isOpen} setIsOpen={setIsOpen} />
     </StyledNav>
   );
 };

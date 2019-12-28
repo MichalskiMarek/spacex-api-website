@@ -32,6 +32,9 @@ const StyledDiv = styled.div`
   align-items: flex-start;
   padding: 10px;
   box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.75);
+  @media (max-width: 11 00px) {
+    width: 80%;
+  }
 `;
 
 const StyledP = styled.p`
