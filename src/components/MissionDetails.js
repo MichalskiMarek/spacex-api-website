@@ -19,6 +19,10 @@ const StyledLink = styled(Link)`
   position: absolute;
   top: 7px;
   right: 7px;
+
+  @media (max-width: 700px) {
+    padding: 10px;
+  }
 `;
 
 const StyledDiv = styled.div`
