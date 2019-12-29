@@ -3,6 +3,7 @@ import styled from "styled-components";
 import LaunchCard from "./LaunchCard";
 import { Switch, Route } from "react-router-dom";
 import MissionDetails from "./MissionDetails";
+import NoMatch from "./NoMatch";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -11,22 +12,34 @@ const StyledDiv = styled.div`
   padding: 0;
 `;
 
-const LaunchList = props => {
-  const allLaunches = props.launches.map(launch => {
+const LaunchList = ({ launches }) => {
+  const allLaunches = launches.map(launch => {
     return (
-      <div key={launch.launch_date_unix + launch.flight_number}>
-        <LaunchCard launch={launch} />
-        <Route path={`/${launch.mission_name.replace(/[(,)]/, "")}`}>
-          <MissionDetails launch={launch} />
-        </Route>
-      </div>
+      <LaunchCard
+        launch={launch}
+        key={launch.launch_date_unix + launch.flight_number}
+      />
+    );
+  });
+
+  const routes = launches.map(launch => {
+    return (
+      <Route
+        exact
+        path={`/${launch.mission_name.replace(/[(,)]/, "")}`}
+        render={() => <MissionDetails launch={launch} />}
+      />
     );
   });
 
   return (
-    <Switch>
-      <StyledDiv>{allLaunches}</StyledDiv>
-    </Switch>
+    <StyledDiv>
+      <Switch>
+        <Route exact path="/" render={() => allLaunches} />
+        {routes}
+        <Route component={NoMatch} />
+      </Switch>
+    </StyledDiv>
   );
 };
 
