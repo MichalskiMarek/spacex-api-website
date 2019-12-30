@@ -1,3 +1,11 @@
+In this project i used: <br/>
+create-react-app <br/>
+react hooks  <br/>
+styled-components  <br/>
+react-router  <br/>
+react-lazyload  <br/>
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
