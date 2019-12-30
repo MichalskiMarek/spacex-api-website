@@ -28,6 +28,7 @@ const LaunchList = ({ launches }) => {
         exact
         path={`/${launch.mission_name.replace(/[(,)]/, "")}`}
         render={() => <MissionDetails launch={launch} />}
+        key={launch.launch_date_unix + launch.mission_id}
       />
     );
   });
