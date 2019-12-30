@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import MissionPatch from "./MissionPatch";
-import LazyLoad from "react-lazyload";
+import LazyLoad, { forceCheck } from "react-lazyload";
 import { Link } from "react-router-dom";
 
 const StyledLink = styled(Link)`
@@ -38,19 +38,20 @@ const StyledMissionName = styled.li`
   margin-bottom: 5px;
 `;
 
-const LaunchList = props => {
+const LaunchList = ({ launch }) => {
+  useEffect(() => {
+    forceCheck();
+  });
   return (
-    <StyledLink to={`/${props.launch.mission_name.replace(/[(,)]/, "")}`}>
+    <StyledLink to={`/${launch.mission_name.replace(/[(,)]/, "")}`}>
       <StyledUl>
         <li>
-          <LazyLoad offset={150}>
-            <MissionPatch
-              missionPatch={props.launch.links.mission_patch_small}
-            />
+          <LazyLoad offset={150} height={200}>
+            <MissionPatch missionPatch={launch.links.mission_patch_small} />
           </LazyLoad>
         </li>
-        <StyledMissionName>{props.launch.mission_name}</StyledMissionName>
-        <li>{props.launch.rocket.rocket_name}</li>
+        <StyledMissionName>{launch.mission_name}</StyledMissionName>
+        <li>{launch.rocket.rocket_name}</li>
       </StyledUl>
     </StyledLink>
   );

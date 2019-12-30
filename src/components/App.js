@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import { createGlobalStyle } from "styled-components";
+import { HashRouter as Router } from "react-router-dom";
 import LaunchList from "./LaunchesList";
-import { BrowserRouter as Router } from "react-router-dom";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
@@ -78,7 +78,7 @@ const App = () => {
   }, [rocketSelect, launches, wasSuccesful, searchLaunches]);
 
   return (
-    <Router>
+    <Router basename="/">
       <GlobalStyle isOpen={isOpen} />
       <div className="App">
         <Header

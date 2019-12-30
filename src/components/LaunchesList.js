@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import styled from "styled-components";
-import LaunchCard from "./LaunchCard";
 import { Switch, Route } from "react-router-dom";
 import MissionDetails from "./MissionDetails";
 import NoMatch from "./NoMatch";
+import LoadingMissions from "./LoadingMissions";
+
+const LaunchCard = lazy(() => import("./LaunchCard"));
 
 const StyledDiv = styled.div`
   display: flex;
@@ -35,11 +37,13 @@ const LaunchList = ({ launches }) => {
 
   return (
     <StyledDiv>
-      <Switch>
-        <Route exact path="/" render={() => allLaunches} />
-        {routes}
-        <Route component={NoMatch} />
-      </Switch>
+      <Suspense fallback={<LoadingMissions />}>
+        <Switch>
+          <Route exact path="/" render={() => allLaunches} />
+          {routes}
+          <Route component={NoMatch} />
+        </Switch>
+      </Suspense>
     </StyledDiv>
   );
 };
