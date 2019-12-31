@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../images/spacex_logo_white.png";
+import { Link } from "react-router-dom";
 
 const StyledImg = styled.img`
   height: 22px;
@@ -12,9 +13,9 @@ const StyledImg = styled.img`
 
 const Logo = () => {
   return (
-    <a href="/">
+    <Link to="/">
       <StyledImg src={logo} alt="SpaceX logo" />
-    </a>
+    </Link>
   );
 };
 
